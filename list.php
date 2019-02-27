@@ -5,6 +5,8 @@ $pageTitle = 'Liste';
 
 require_once './component/header.php';
 ?>
+<?php if( count( $games ) > 0 ){ ?>
+<p>Il y a <?php echo count( $games ); ?> jeu(x)</p>
 
 <table>
     <thead>
@@ -26,7 +28,7 @@ require_once './component/header.php';
                 <td>
                     <strong><?php echo $game['name']; ?></strong>
                 </td>
-                <td><?php echo $game['type']; ?></td>
+                <td><?php echo getGameType( $game['type'] ); ?></td>
                 <td>
                     <a href="show.php">Voir plus de détail</a>
                 </td>
@@ -35,6 +37,10 @@ require_once './component/header.php';
 
     </tbody>
 </table>
+<?php }else{ ?>
+    <p>Aucun jeu disponible</p>
+<?php } ?>
+
 
 <?php
 require_once './component/footer.php';

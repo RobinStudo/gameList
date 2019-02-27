@@ -11,3 +11,20 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <header>
+            <nav>
+                <a href="index.php">Gamelist</a>
+                <a href="list.php">Liste des jeux</a>
+                <a href="contest.php">Concours</a>
+            </nav>
+
+            <div class="user-area">
+                <?php if( $user ){ ?>
+                    Bienvenue <?php echo $user['username']; ?>
+                    <a href="#">Déconnexion</a>
+                <?php }else{ ?>
+                    <a href="#">Connexion</a> -
+                    <a href="#">Inscription</a>
+                <?php } ?>
+            </div>
+        </header>

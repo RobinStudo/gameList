@@ -1,8 +1,9 @@
 <?php
 require_once './component/app.php';
 
-$game = $games[1];
-$averageRate = ( $game['pressRate'] + $game['playerRate'] ) / 2;
+$game = $games[4];
+$averageRate = averageRate( [ $game['pressRate'], $game['playerRate'] ] );
+$type = getGameType( $game['type'] );
 
 $pageTitle = $game['name'];
 
@@ -13,7 +14,7 @@ require_once './component/header.php';
     <h1><?php echo $game['name']; ?></h1>
 </div>
 
-<?php if( $game['type'] == 'Horreur' || $game['type'] == 'Adulte' ){ ?>
+<?php if( isTriggerType( $game['type'] ) ){ ?>
     <input type="checkbox" name="hideTrigger" id="hideTrigger">
     <div class="trigger-warning__overlay">
         <div class="trigger-warning">
