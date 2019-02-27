@@ -1,29 +1,19 @@
 <?php
-$user = false;
+require_once './component/app.php';
 
-// $user = array(
-//     'username' => 'Patrick',
-//     'premium' => true,
-// );
-
+require_once './component/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>GameList</title>
-    </head>
-    <body>
-        <div class="user-area">
-            <?php if( $user ){ ?>
-                Bienvenue <?php echo $user['username']; ?>
-                <a href="#">Déconnexion</a>
-            <?php }else{ ?>
-                <a href="#">Connexion</a> -
-                <a href="#">Inscription</a>
-            <?php } ?>
-        </div>
 
+<div class="user-area">
+    <?php if( $user ){ ?>
+        Bienvenue <?php echo $user['username']; ?>
+        <a href="#">Déconnexion</a>
+    <?php }else{ ?>
+        <a href="#">Connexion</a> -
+        <a href="#">Inscription</a>
+    <?php } ?>
+</div>
 
-    </body>
-</html>
+<?php
+require_once './component/footer.php';
+?>

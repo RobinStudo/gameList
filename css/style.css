@@ -1,0 +1,98 @@
+body{
+    margin: 0;
+}
+
+.contest{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contest-box{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    margin: 20px;
+    color: white;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+table img{
+    height: 100px;
+}
+
+tr.white{
+    background-color: #ecf0f1;
+}
+tr.grey{
+    background-color: #bdc3c7;
+}
+
+h1{
+    color: white;
+}
+.banner{
+    background-size: cover;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[name="hideTrigger"]{
+    display: none;
+}
+
+input[name="hideTrigger"]:checked + .trigger-warning__overlay{
+    display: none;
+}
+
+.trigger-warning__overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trigger-warning{
+    background-color: red;
+    color: white;
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+    flex-grow: 1;
+    position: relative;
+}
+label[for="hideTrigger"]{
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    color: white;
+    font-size: 1.8rem;
+}
+
+.rate i{
+    color: yellow;
+    font-size: 3rem;
+}
+
+.progress{
+    width: 300px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar{
+    height: 100%;
+    background-color: blue;
+}
