@@ -21,6 +21,13 @@ header a:hover{
     border-bottom: 2px solid white;
 }
 
+footer{
+    background-color: #2980b9;
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
 .contest{
     display: flex;
     flex-wrap: wrap;

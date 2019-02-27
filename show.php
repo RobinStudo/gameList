@@ -1,7 +1,7 @@
 <?php
 require_once './component/app.php';
 
-$game = $games[4];
+$game = $games[2];
 $averageRate = averageRate( [ $game['pressRate'], $game['playerRate'] ] );
 $type = getGameType( $game['type'] );
 
@@ -11,7 +11,7 @@ require_once './component/header.php';
 ?>
 
 <div class="banner" style="background-image:url('<?php echo $game['poster']; ?>');">
-    <h1><?php echo $game['name']; ?></h1>
+    <h1><?php echo strtoupper( $game['name'] ); ?></h1>
 </div>
 
 <?php if( isTriggerType( $game['type'] ) ){ ?>
@@ -56,6 +56,15 @@ require_once './component/header.php';
 
     <?php echo $averageRate; ?>
 </div>
+
+<?php
+$spendTime = releaseDate( $game['releaseDate'] );
+if( $spendTime ){
+?>
+<p>
+    Le jeu est sorti il y a <?php echo $spendTime; ?> secondes
+</p>
+<?php } ?>
 
 <?php
 require_once './component/footer.php';

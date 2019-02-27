@@ -26,3 +26,26 @@ function isTriggerType( $id ){
     }
     return false;
 }
+
+function releaseDate( $date ){
+    $gameTime = strtotime( $date );
+    $spendTime = time() - $gameTime;
+
+    if( $spendTime < 0 ){
+        return false;
+    }
+
+    return $spendTime;
+}
+
+function truncText( $string ){
+    if( strlen( $string ) < 40 ){
+        return $string;
+    }
+
+    $trunc = substr( $string, 0, 40 ) ;
+    $pos = strrpos( $trunc, ' ' );
+    $out = substr( $trunc, 0, $pos );
+
+    return $out . '...';
+}

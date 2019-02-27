@@ -14,6 +14,7 @@ require_once './component/header.php';
             <th>Affiche</th>
             <th>Nom</th>
             <th>Type</th>
+            <th>Description</th>
             <th>Lien</th>
         </tr>
     </thead>
@@ -29,6 +30,9 @@ require_once './component/header.php';
                     <strong><?php echo $game['name']; ?></strong>
                 </td>
                 <td><?php echo getGameType( $game['type'] ); ?></td>
+                <td>
+                    <?php echo truncText( $game['description'] ); ?>
+                </td>
                 <td>
                     <a href="show.php">Voir plus de détail</a>
                 </td>
