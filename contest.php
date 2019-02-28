@@ -2,6 +2,7 @@
 require_once './component/app.php';
 
 if( !$user || !$user['premium'] ){
+    // FLASH MESSAGE
     header('Location: index.php');
 }
 

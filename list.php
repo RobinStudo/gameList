@@ -49,7 +49,7 @@ require_once './component/header.php';
                     <?php echo truncText( $game['description'] ); ?>
                 </td>
                 <td>
-                    <a href="show.php">Voir plus de détail</a>
+                    <a href="show.php?id=<?php echo $game['id']; ?>">Voir plus de détail</a>
                 </td>
             </tr>
         <?php } ?>

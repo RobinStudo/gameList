@@ -1,7 +1,12 @@
 <?php
 require_once './component/app.php';
 
-$game = $games[2];
+$game = getGame( $_GET['id'] );
+if( $game === false ){
+    // FLASH MESSAGE
+    header('Location: list.php');
+}
+
 $averageRate = averageRate( [ $game['pressRate'], $game['playerRate'] ] );
 $type = getGameType( $game['type'] );
 

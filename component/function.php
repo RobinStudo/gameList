@@ -73,3 +73,19 @@ function searchGames( $query ){
 
     return $results;
 }
+
+function getGame( $id ){
+    global $games;
+
+    if( !is_numeric( $id ) ){
+        return false;
+    }
+
+    foreach( $games as $game ){
+        if( $game['id'] == $id ){
+            return $game;
+        }
+    }
+
+    return false;
+}
