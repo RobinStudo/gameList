@@ -1,4 +1,6 @@
 <?php
+use VRia\Utils\NoDiacritic;
+
 function averageRate( $rates ){
     $average = array_sum( $rates ) / count( $rates );
     return round( $average );
@@ -54,11 +56,17 @@ function searchGames( $query ){
     global $games;
 
     $results = array();
-    $cleanQuery = strtolower( $query );
-    
+    $cleanQuery = strtolower( NoDiacritic::filter( $query ) );
+
     foreach( $games as $game ){
-        $cleanName = strtolower( $game['name'] );
-        if( $cleanQuery == $cleanName ){
+        $cleanName = strtolower( NoDiacritic::filter( $game['name'] ) );
+        if( substr_count( $cleanName, $cleanQuery ) > 0 ){
+            $results[] = $game;
+            continue;
+        }
+
+        similar_text( $cleanName, $cleanQuery, $score );
+        if( $score > 70 ){
             $results[] = $game;
         }
     }
