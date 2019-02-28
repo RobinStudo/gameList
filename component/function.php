@@ -49,3 +49,19 @@ function truncText( $string ){
 
     return $out . '...';
 }
+
+function searchGames( $query ){
+    global $games;
+
+    $results = array();
+    $cleanQuery = strtolower( $query );
+    
+    foreach( $games as $game ){
+        $cleanName = strtolower( $game['name'] );
+        if( $cleanQuery == $cleanName ){
+            $results[] = $game;
+        }
+    }
+
+    return $results;
+}

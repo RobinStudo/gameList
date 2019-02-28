@@ -1,12 +1,27 @@
 <?php
 require_once './component/app.php';
 
-$pageTitle = 'Liste';
+if( !empty( $_GET['query'] ) ){
+    $query = htmlspecialchars( $_GET['query'] );
+    $items = searchGames( $query );
+}else{
+    $items = $games;
+}
 
+$pageTitle = 'Liste';
 require_once './component/header.php';
 ?>
-<?php if( count( $games ) > 0 ){ ?>
-<p>Il y a <?php echo count( $games ); ?> jeu(x)</p>
+
+<form method="get" class="search-engine">
+    <input type="search" name="query" placeholder="Rechercher...">
+    <button type="submit">
+        <i class="fas fa-search"></i>
+    </button>
+</form>
+
+
+<?php if( count( $items ) > 0 ){ ?>
+<p>Il y a <?php echo count( $items ); ?> jeu(x)</p>
 
 <table>
     <thead>
@@ -21,7 +36,7 @@ require_once './component/header.php';
 
     <tbody>
 
-        <?php foreach( $games as $key => $game ){ ?>
+        <?php foreach( $items as $key => $game ){ ?>
             <tr class="<?php echo ( $key % 2 ) ? 'white' : 'grey' ?>">
                 <td>
                     <img src="<?php echo $game['poster']; ?>" alt="Affiche du jeu">

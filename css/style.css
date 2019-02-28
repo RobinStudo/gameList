@@ -46,6 +46,18 @@ footer{
     text-decoration: none;
 }
 
+.search-engine{
+    width: 100%;
+    display: flex;
+    font-size: 1.6rem;
+}
+
+.search-engine input[type="search"]{
+    flex-grow: 1;
+    font-size: 1.6rem;
+    padding: 10px;
+}
+
 table{
     width: 100%;
 }
