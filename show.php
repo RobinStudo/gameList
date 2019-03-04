@@ -10,6 +10,25 @@ if( $game === false ){
 $averageRate = averageRate( [ $game['pressRate'], $game['playerRate'] ] );
 $type = getGameType( $game['type'] );
 
+$comments = [];
+foreach( $gameComments as $gComment ){
+    if( $gComment['gameId'] == $game['id'] ){
+        $comments = $gComment['comments'];
+        break;
+    }
+}
+
+if( !empty( $_POST['username'] ) && !empty( $_POST['message'] ) ){
+    $comment = [
+        'id' => uniqid(),
+        'username' => htmlspecialchars( $_POST['username'] ),
+        'message' => htmlspecialchars( $_POST['message'] ),
+        'postedAt' => date('Y-m-d H:i:s'),
+    ];
+
+    $comments[] = $comment;
+}
+
 $pageTitle = $game['name'];
 
 require_once './component/header.php';
@@ -70,6 +89,23 @@ if( $spendTime ){
     Le jeu est sorti il y a <?php echo $spendTime; ?> secondes
 </p>
 <?php } ?>
+
+<div class="coments">
+    <form method="post">
+        <input type="text" name="username" placeholder="Nom d'utilisateur">
+        <textarea name="message" placeholder="Votre commentaire"></textarea>
+        <button type="submit">Commenter</button>
+    </form>
+
+    <?php foreach( $comments as $comment ){ ?>
+        <div class="comment">
+            <strong><?php echo $comment['username']; ?></strong>
+            <span> - <?php echo $comment['postedAt']; ?></span>
+            <p><?php echo $comment['message']; ?></p>
+        </div>
+    <?php } ?>
+</div>
+
 
 <?php
 require_once './component/footer.php';

@@ -74,6 +74,43 @@ $games = [
     ],
 ];
 
+$gameComments = [
+    [
+        'gameId' => 1,
+        'comments' => [
+            [
+                'id' => 1,
+                'username' => 'Bobo',
+                'message' => 'Bonjour, ce jeu est super !!',
+                'postedAt' => '2019-01-12 13:24:00',
+            ],
+            [
+                'id' => 2,
+                'username' => 'Baba',
+                'message' => 'Bonjour, ce jeu est nul !!',
+                'postedAt' => '2019-02-05 11:24:00',
+            ],
+        ]
+    ],
+    [
+        'gameId' => 3,
+        'comments' => [
+            [
+                'id' => 3,
+                'username' => 'Pipo',
+                'message' => 'Bonjour, ce jeu est moyen !!',
+                'postedAt' => '2019-01-12 13:24:00',
+            ],
+            [
+                'id' => 4,
+                'username' => 'Jean-Paul',
+                'message' => 'Bonjour, ce jeu est parfait !!',
+                'postedAt' => '2019-02-05 11:24:00',
+            ],
+        ]
+    ],
+];
+
 // $user = false;
 
 $user = array(
