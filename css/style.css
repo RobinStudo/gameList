@@ -22,6 +22,7 @@ header a:hover{
 }
 
 footer{
+    margin-top: 20px;
     background-color: #2980b9;
     padding: 10px;
     color: white;
@@ -137,4 +138,15 @@ label[for="hideTrigger"]{
 .progress-bar{
     height: 100%;
     background-color: blue;
+}
+
+label[for="uploadFile"]{
+    background-color: #2980b9;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+label[for="uploadFile"] + input[type="file"]{
+    display: none;
 }
