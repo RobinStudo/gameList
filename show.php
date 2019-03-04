@@ -90,6 +90,8 @@ if( $spendTime ){
 </p>
 <?php } ?>
 
+<a href="upload.php?id=<?php echo $game['id']; ?>">Ajouter un visuel</a>
+
 <div class="coments">
     <form method="post">
         <input type="text" name="username" placeholder="Nom d'utilisateur">
