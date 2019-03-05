@@ -130,3 +130,26 @@ function displayBox( $start, $max ){
         displayBox( $start, $max );
     }
 }
+
+function getGamePictures( $gid, $path = './data' ){
+    $files = scandir( $path );
+    $files = array_diff( $files, array('.', '..') );
+    $identifier = 'gid_' . $gid . '_image';
+
+    $pictures = array();
+    while( $files ){
+        $file = array_shift( $files );
+
+        $fullPath = $path . '/' . $file;
+        if( substr_count( $file, $identifier ) > 0 ){
+            $pictures[] = $fullPath;
+        }
+
+        if( is_dir( $fullPath ) ){
+            $temp = getGamePictures( $gid, $fullPath );
+            $pictures = array_merge( $pictures, $temp );
+        }
+    }
+
+    return $pictures;
+}

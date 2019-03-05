@@ -31,6 +31,8 @@ if( !empty( $_POST['username'] ) && !empty( $_POST['message'] ) ){
     $comments[] = $comment;
 }
 
+$pictures = getGamePictures( $game['id'] );
+
 $pageTitle = $game['name'];
 
 require_once './component/header.php';
@@ -93,6 +95,13 @@ if( $spendTime ){
 <?php } ?>
 
 <a href="upload.php?id=<?php echo $game['id']; ?>">Ajouter un visuel</a>
+
+<div class="medias">
+    <h3>Les images du jeu</h3>
+    <?php foreach( $pictures as $picture ){ ?>
+        <img src="<?php echo $picture; ?>" alt="Image du jeu" class="gameImage">
+    <?php } ?>
+</div>
 
 <div class="coments">
     <form method="post">
