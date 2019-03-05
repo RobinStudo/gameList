@@ -119,3 +119,14 @@ function writeLog( $line ){
 
     fclose( $file );
 }
+
+function displayBox( $start, $max ){
+    echo '<a href="contest.php" class="contest-box">';
+    echo $start + 1;
+    echo '</a>';
+
+    $start++;
+    if( $start < $max ){
+        displayBox( $start, $max );
+    }
+}

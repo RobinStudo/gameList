@@ -14,11 +14,7 @@ require_once './component/header.php';
 <h2>Concours</h2>
 
 <div class="contest">
-    <?php for( $i = 0; $i < 10; $i++ ){ ?>
-        <a href="contest.php" class="contest-box">
-            <?php echo $i + 1; ?>
-        </a>
-    <?php } ?>
+    <?php displayBox( 0, 10 ); ?>
 </div>
 
 <?php
