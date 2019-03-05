@@ -7,6 +7,8 @@ if( $game === false ){
     header('Location: list.php');
 }
 
+logShowView( $game['id'] );
+
 $averageRate = averageRate( [ $game['pressRate'], $game['playerRate'] ] );
 $type = getGameType( $game['type'] );
 

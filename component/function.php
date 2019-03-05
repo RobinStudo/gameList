@@ -89,3 +89,33 @@ function getGame( $id ){
 
     return false;
 }
+
+function logShowView( $gid ){
+    $log = '[' . date('Y-m-d H:i:s') . '] ';
+    $log .= 'Visited game with id : ' . $gid . ' ';
+    $log .= 'from IP : ' . $_SERVER['REMOTE_ADDR'];
+
+    return writeLog( $log );
+}
+
+function logUploadPicture( $gid, $name ){
+    $log = '[' . date('Y-m-d H:i:s') . '] ';
+    $log .= 'Uploaded picture for game with id : ' . $gid . ' ';
+    $log .= 'with name : ' . $name;
+
+    return writeLog( $log );
+}
+
+function writeLog( $line ){
+    if( filesize( 'log/access.log' ) > 100 ){
+        $name = 'access-' . date('Y-m-d H:i:s') . '.log';
+        rename( 'log/access.log', 'log/backup/' . $name );
+    }
+
+    $file = fopen( 'log/access.log', 'a+' );
+
+    $line .= PHP_EOL;
+    fputs( $file, $line );
+
+    fclose( $file );
+}

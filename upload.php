@@ -21,6 +21,7 @@ if( !empty( $_POST['url'] ) ){
         $name = uniqid( $prefix ) . $ext;
 
         file_put_contents( 'data/imported/' . $name, $content );
+        logUploadPicture( $game['id'], $name );
 
         // $file = fopen( 'data/imported/' . $name, 'w' );
         // fwrite( $file, $content );
@@ -40,6 +41,9 @@ if( !empty( $_POST['url'] ) ){
             $prefix = 'gid_' . $game['id'] . '_image_';
             $name = uniqid( $prefix ) . '.' . $ext;
             move_uploaded_file( $tmp, 'data/' . $name );
+
+            logUploadPicture( $game['id'], $name );
+
             // FLASH MESSAGE
             header('Location: show.php?id=' . $game['id'] );
         }else{
