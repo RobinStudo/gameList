@@ -9,7 +9,25 @@ if( $game === false ){
     header('Location: list.php');
 }
 
-if( isset( $_FILES['document'] ) && $_FILES['document']['error'] == 0 ){
+if( !empty( $_POST['url'] ) ){
+    $url = htmlspecialchars( $_POST['url'] );
+
+    if( filter_var( $url, FILTER_VALIDATE_URL ) ){
+        $content = file_get_contents( $url );
+
+        $pos = strrpos( $url, '.' );
+        $ext = substr( $url, $pos );
+        $prefix = 'gid_' . $game['id'] . '_image_';
+        $name = uniqid( $prefix ) . $ext;
+
+        file_put_contents( 'data/imported/' . $name, $content );
+
+        // $file = fopen( 'data/imported/' . $name, 'w' );
+        // fwrite( $file, $content );
+        // fclose( $file );
+    }
+
+}else if( isset( $_FILES['document'] ) && $_FILES['document']['error'] == 0 ){
     if( $_FILES['document']['size'] <= 4000000 ){
 
         $allowTypes = [ 'image/jpeg', 'image/png' ];
@@ -48,6 +66,9 @@ require_once './component/header.php';
 <form method="post" enctype="multipart/form-data">
     <label for="uploadFile">Ajouter un fichier</label>
     <input type="file" name="document" id="uploadFile">
+
+    <input type="url" name="url" placeholder="Saisir une URL">
+
     <input type="submit" value="Envoyer">
 </form>
 
