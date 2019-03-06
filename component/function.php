@@ -182,3 +182,15 @@ function login( $user ){
     $_SESSION['auth'] = true;
     $_SESSION['user'] = $user;
 }
+
+function getUser( $email ){
+    global $users;
+
+    foreach( $users as $user ){
+        if( $user['email'] == $email ){
+            return $user;
+        }
+    }
+
+    return false;
+}

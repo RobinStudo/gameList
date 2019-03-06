@@ -21,9 +21,9 @@
             <div class="user-area">
                 <?php if( $user ){ ?>
                     Bienvenue <?php echo $user['username']; ?>
-                    <a href="#">Déconnexion</a>
+                    <a href="logout.php">Déconnexion</a>
                 <?php }else{ ?>
-                    <a href="#">Connexion</a> -
+                    <a href="login.php">Connexion</a> -
                     <a href="register.php">Inscription</a>
                 <?php } ?>
             </div>
