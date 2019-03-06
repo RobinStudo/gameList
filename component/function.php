@@ -153,3 +153,32 @@ function getGamePictures( $gid, $path = './data' ){
 
     return $pictures;
 }
+
+function checkMail( $email ){
+    global $users;
+
+    if( !filter_var( $email, FILTER_VALIDATE_EMAIL ) ){
+        return false;
+    }
+
+    foreach( $users as $user ){
+        if( $user['email'] == $email ){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function checkPassword( $pwd ){
+    if( strlen( $pwd ) < 6 ){
+        return false;
+    }
+
+    return true;
+}
+
+function login( $user ){
+    $_SESSION['auth'] = true;
+    $_SESSION['user'] = $user;
+}

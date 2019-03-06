@@ -24,7 +24,7 @@
                     <a href="#">Déconnexion</a>
                 <?php }else{ ?>
                     <a href="#">Connexion</a> -
-                    <a href="#">Inscription</a>
+                    <a href="register.php">Inscription</a>
                 <?php } ?>
             </div>
         </header>

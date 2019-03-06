@@ -2,6 +2,8 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/function.php';
 
+session_start();
+
 $types = [
     [ 'id' => 1, 'name' => 'Action', 'trigger' => true ],
     [ 'id' => 2, 'name' => 'Aventure', 'trigger' => false ],
@@ -111,9 +113,17 @@ $gameComments = [
     ],
 ];
 
-// $user = false;
+$users = [
+    [
+        'username' => 'Jean-Paul II Gauthier',
+        'email' => 'toto@tata.com',
+        'password' => '$2y$10$uIXoaAciUtozsSRWU2Y.FeTz4wERZdfYmuAVKryk7eAv1JGio/EyW',
+        'premium' => true,
+    ],
+];
 
-$user = array(
-    'username' => 'Patrick',
-    'premium' => true,
-);
+if( !empty( $_SESSION['auth'] ) && $_SESSION['auth'] === true ){
+    $user = $_SESSION['user'];
+}else{
+    $user = false;
+}
