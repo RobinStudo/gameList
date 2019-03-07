@@ -129,6 +129,8 @@ $users = [
         'email' => 'toto@tata.com',
         'password' => '$2y$10$uIXoaAciUtozsSRWU2Y.FeTz4wERZdfYmuAVKryk7eAv1JGio/EyW',
         'premium' => true,
+        'resetToken' => '805fe59568c1086b703ce3836ae4612395a701f9',
+        'resetTokenExpire' => '1552048602',
     ],
 ];
 

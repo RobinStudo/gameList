@@ -183,11 +183,11 @@ function login( $user ){
     $_SESSION['user'] = $user;
 }
 
-function getUser( $email ){
+function getUser( $value, $by = 'email' ){
     global $users;
 
     foreach( $users as $user ){
-        if( $user['email'] == $email ){
+        if( $user[ $by ] == $value ){
             return $user;
         }
     }
