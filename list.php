@@ -8,6 +8,19 @@ if( !empty( $_GET['query'] ) ){
     $items = $games;
 }
 
+$itemPerPage = 2;
+$counterItem = count( $items );
+$totalPage = ceil( $counterItem / $itemPerPage );
+
+if( !empty( $_GET['page'] ) ){
+    $page = $_GET['page'];
+}else{
+    $page = 1;
+}
+
+$offset = ( $page - 1 ) * $itemPerPage;
+$items = array_slice( $items, $offset, $itemPerPage );
+
 $pageTitle = 'Liste';
 require_once './component/header.php';
 ?>
@@ -56,6 +69,43 @@ require_once './component/header.php';
 
     </tbody>
 </table>
+
+<?php if( $page > 1 ){ ?>
+    <a href="list.php?page=<?php echo $page - 1; ?>">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+<?php } ?>
+
+<?php for( $i = 1; $i <= $totalPage; $i++ ){ ?>
+    <?php if( $i != $page ){ ?>
+        <?php if( $i <= 3 ){ ?>
+            <a href="list.php?page=<?php echo $i ?>"><?php echo $i ?></a>
+
+            <?php if( $i == 3 && $page > 6 ){ ?>
+                ...
+            <?php } ?>
+        <?php }else if( $i > ( $totalPage - 3 ) ){ ?>
+            <?php if( $i == ( $totalPage - 2 ) && $page < ( $totalPage - 5 ) ){ ?>
+                ...
+            <?php } ?>
+
+            <a href="list.php?page=<?php echo $i ?>"><?php echo $i ?></a>
+        <?php }else if( $i > ( $page - 3 ) && $i < ( $page + 3 ) ){ ?>
+            <a href="list.php?page=<?php echo $i ?>"><?php echo $i ?></a>
+        <?php } ?>
+
+    <?php }else{ ?>
+        <strong><?php echo $i; ?></strong>
+    <?php } ?>
+<?php } ?>
+
+<?php if( $page < $totalPage ){ ?>
+    <a href="list.php?page=<?php echo $page + 1; ?>">
+        <i class="fas fa-arrow-right"></i>
+    </a>
+<?php } ?>
+
+
 <?php }else{ ?>
     <p>Aucun jeu disponible</p>
 <?php } ?>
