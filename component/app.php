@@ -4,6 +4,16 @@ require_once __DIR__ . '/function.php';
 
 session_start();
 
+if( !isset( $_COOKIE['userLang'] ) ){
+    setcookie( 'userLang', 'fr', time() + 365 * 24 * 3600 );
+    $_COOKIE['userLang'] = 'fr';
+}
+
+if( !empty( $_COOKIE['userLogin'] ) ){
+    $userLogin = unserialize( $_COOKIE['userLogin'] );
+    login( $userLogin );
+}
+
 $types = [
     [ 'id' => 1, 'name' => 'Action', 'trigger' => true ],
     [ 'id' => 2, 'name' => 'Aventure', 'trigger' => false ],
